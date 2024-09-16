@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{62EB98AA-5478-4A67-85B8-B73B3F4DAA49}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Code conventions.md = Code conventions.md
+		VB\Demos.md = VB\Demos.md
+		Directory.Build.props = Directory.Build.props
+		VB\Effectief VB.NET programmeren.pptx = VB\Effectief VB.NET programmeren.pptx
+		VB\Woordenlijst.md = VB\Woordenlijst.md
+	EndProjectSection
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Demos", "VB\Demos\Demos.vbproj", "{23080950-D557-42C8-BA60-05E7E53A2F65}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Exercises", "VB\Exercises\Exercises.vbproj", "{50D8567E-F1CF-4E61-BBB1-3C5DE5DEC7C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23080950-D557-42C8-BA60-05E7E53A2F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23080950-D557-42C8-BA60-05E7E53A2F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23080950-D557-42C8-BA60-05E7E53A2F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23080950-D557-42C8-BA60-05E7E53A2F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D8567E-F1CF-4E61-BBB1-3C5DE5DEC7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D8567E-F1CF-4E61-BBB1-3C5DE5DEC7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D8567E-F1CF-4E61-BBB1-3C5DE5DEC7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D8567E-F1CF-4E61-BBB1-3C5DE5DEC7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C50408CC-4282-4A37-9572-E48AD8465A19}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://pdtfs01.ad.afas.nl/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = VB\\Demos\\Demos.vbproj
+		SccProjectName1 = VB/Demos
+		SccLocalPath1 = VB\\Demos
+		SccProjectUniqueName2 = VB\\Exercises\\Exercises.vbproj
+		SccProjectName2 = VB/Exercises
+		SccLocalPath2 = VB\\Exercises
+	EndGlobalSection
+EndGlobal
