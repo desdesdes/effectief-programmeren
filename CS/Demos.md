@@ -200,6 +200,9 @@
   private static Singleton? _instance;
   public static Singleton Current => _instance ??= new Singleton();
   ```
+
+- Let op: Gebruik de [ThreadStatic] gaat niet mee in de async / await context. Is dat nodig gebruik dan `AsyncLocal<>`. Overigens is daar ook een `ThreadLocal<>` tegenhanger van beschikbaar.
+
 ### Thread safe Singleton
 
 - Thread safe Singleton, bijvoorbeeld met `lock`. Pas de code als volgt aan:
@@ -281,7 +284,14 @@
   }
   ```
 
-- Let op gebruik je het singleton patroon dan altijd documenteren op de `Current` property of het of de data per thread wordt bijgehouden of gedeeld wordt (per AssemblyLoadContext).
+- Let op: Gebruik je het singleton patroon dan altijd documenteren op de `Current` property of het of de data per thread wordt bijgehouden of gedeeld wordt (per AssemblyLoadContext).
+- Let op: Heb je meerdere static variable of een static contructor in een class dan gebeurd de initialisatie mogelijk eerder op dan bij het aanroepen van de `Current` property. In dat geval kun je beter de `Lazy<>` gebruiken.
+
+  ``` csharp
+  private static readonly Lazy<Singleton> _instance = new(() => new Singleton());
+
+  public static Singleton Current => _instance.Value;
+  ```
 
 ## Demo 4a: Events en delegates
 
