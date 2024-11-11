@@ -49,7 +49,12 @@ public abstract class MyException : Exception
     }
 
     // Allows readers to add their own fields
-    AppendFieldInfo(sb);
+    var fieldInfoString = BuildFieldInfoString();
+    if(fieldInfoString != null)
+    {
+      sb.AppendLine();
+      sb.Append(fieldInfoString);
+    }
 
     if(InnerException != null)
     {
@@ -60,19 +65,25 @@ public abstract class MyException : Exception
       sb.Append("   ");
       sb.Append(endOfInnerExceptionResource);
     }
+
     if(stackTrace != null)
     {
       sb.AppendLine();
       sb.Append(stackTrace);
     }
+
     Debug.Assert(sb.Length == 0);
 
     // Return it
     return sb.ToString();
   }
 
-  protected virtual void AppendFieldInfo(StringBuilder sb)
+  /// <summary>
+  /// Allows derived classes to add their own fields to the exception string.
+  /// </summary>
+  /// <returns><c>null</c> if no data needs to be added, else a string containing one line per field with the fieldname and data seperated by ": ".</returns>
+  protected virtual StringBuilder? BuildFieldInfoString()
   {
-
+    return null;
   }
 }
