@@ -17,6 +17,7 @@ public class Program
     //Xml.Runner.RunMe();
     //Json.Runner.RunMe();
     //Sql.Runner.RunMe();
+    //Exceptions.Runner.RunMe();
     //DI.Runner.RunMe();
   }
 }
