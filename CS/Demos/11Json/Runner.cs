@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 
 namespace Demos.Json;
 
@@ -13,6 +12,11 @@ static class Runner
   private const string _jsonFileName = "c:\\temp\\demo.json";
   private const string _jsonFileName2 = "c:\\temp\\demo2.json";
   private const int _times = 200000;
+
+  private static JsonSerializerOptions _options = new() // consider json source generator
+  {
+    WriteIndented = true
+  };
 
   public static void RunMe()
   {
@@ -206,14 +210,14 @@ static class Runner
 
     using(var stream = File.Create(_jsonFileName2))
     {
-      JsonSerializer.Serialize(stream, persons, MyJsonSerializerContext.Default.Persons);
+      JsonSerializer.Serialize(stream, persons, _options);
     }
 
     StoreStat();
 
     using(var stream = File.OpenRead(_jsonFileName))
     {
-      var newPersons = JsonSerializer.Deserialize(stream, MyJsonSerializerContext.Default.Persons)!;
+      var newPersons = JsonSerializer.Deserialize<Persons>(stream, _options)!;
       Console.WriteLine(newPersons.Count);
     }
 
@@ -221,8 +225,3 @@ static class Runner
   }
 }
 
-[JsonSourceGenerationOptions(WriteIndented = true)]
-[JsonSerializable(typeof(Persons))]
-internal partial class MyJsonSerializerContext : JsonSerializerContext
-{
-}

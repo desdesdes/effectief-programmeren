@@ -11,7 +11,7 @@ static class SettingsUtils
     using var stream = File.OpenRead(filePath);
     var len = stream.ReadByte();
     var buffer = new byte[len];
-    stream.Read(buffer, 0, len);
+    _ = stream.Read(buffer, 0, len); // Discard the result, we know it's the same as len
     var typeName = Encoding.UTF8.GetString(buffer);
     var result = JsonSerializer.Deserialize(stream, Type.GetType(typeName)!);
     return (ISettings)result!;
