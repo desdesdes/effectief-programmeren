@@ -18,6 +18,6 @@ public class Program
     //Json.Runner.RunMe();
     //Sql.Runner.RunMe();
     //Exceptions.Runner.RunMe();
-    //DI.Runner.RunMe();
+    //Parallel.Runner.RunMe();
   }
 }

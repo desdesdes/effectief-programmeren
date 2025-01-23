@@ -774,3 +774,75 @@
     transaction.Commit();
   }
   ```
+
+## Demo 13: Parallel
+
+### Geen await zorgt voor parallel
+
+- Open WpfClient. Run de code. De code werkt. Maar de textbox geeft printing aan terwijl het printen nog niet afgelopen is. Blijkbaar draait er parellele code. Zowel het printen is bezig als de ui wordt biijgewerkt.
+
+- Pas de code aan naar:
+
+```csharp
+private async void StartButton_Click(object sender, RoutedEventArgs e)
+{
+  _printer.Reset();
+  TextBox1.Text = _printer.PrintStatus.ToString();
+  await _printer.PrintAsync("Hallo Wereld");
+  TextBox1.Text = _printer.PrintStatus.ToString();
+}
+```
+
+- Run de code. Blijkbaar wordt de textbox nu bijgewerkt als het printen klaar is. Conclusie: async zorgt voor parallele code, await zorgt dat deze wel sequentieel wordt uitgevoerd. Een async functie op een object aanroepen zonder await zorgt voor parrallele code. We hebben gezegd dat dit alleen mag op objecten dit thread safe zijn. Je bent dus verplicht om te wachten met de 2de functie call op een object tot de async method klaar is tenzij anders gedocumenteerd door de bouwe van de `Printer` class.
+
+### ConfigureAwait(false)
+
+- Pas de code aan naar:
+
+```csharp
+private async void StartButton_Click(object sender, RoutedEventArgs e)
+{
+  _printer.Reset();
+  TextBox1.Text = _printer.PrintStatus.ToString();
+  await _printer.PrintAsync("Hallo Wereld").ConfigureAwait(false);
+  TextBox1.Text = _printer.PrintStatus.ToString();
+}
+```
+
+- Run de code. Eerst wat opvalt, code gaat nog steeds **na** elkaar, maar dit geeft nu een exception omdat het op een threadpool thread wordt uitgevoerd. Standaard await gedrag is dat de code na de await wordt uitgevoerd op de thread die wordt bepaald door de `SynchronizationContext`. ConfigureAwait(false) zorgt ervoor dat de SynchronizationContext vervalt naar een standaard threadpool context. Dit is tevens de default. 
+Echter in UI applicaties (WPF, WinForms, IOS, Android, enz) is deze synchronization context op de ui thread ook de ui thread. In de UI applicaties heeft `ConfigureAwait(false)`, dus meerwaarde, in de overige applicaties is het een noop, het doet feitelijk niets.
+
+```csharp
+private async void StartButton_Click(object sender, RoutedEventArgs e)
+{
+  await RunMe();
+  TextBox1.Text = _printer.PrintStatus.ToString();
+}
+
+private async Task RunMe()
+{
+  _printer.Reset();
+  TextBox1.Text = _printer.PrintStatus.ToString();
+  await _printer.PrintAsync("Hallo Wereld").ConfigureAwait(false);
+}
+```
+
+- We zien hier dat de code in de await in de `RunMe` methode wordt uitgevoerd op een threadpool thread. Maar na de await in de `StartButton_Click` methode wordt de code weer uitgevoerd op de ui thread. Omdat dit alleen speelt in UI apps op de UI thread hebben we bij AFAS besloten nergens ConfigureAwait(false) aan te roepen, ook niet in libraries, muv in ui code waar het ook daadwerkelijk tot ander gedrag leidt.
+
+### Thread safe en await
+
+- Pas de code aan naar:
+
+```csharp
+private async void StartButton_Click(object sender, RoutedEventArgs e)
+{
+  _printer.Reset();
+  TextBox1.Text = _printer.PrintStatus.ToString();
+  var t1 = _printer.PrintAsync("Hallo Wereld1");
+  var t2 = _printer.PrintAsync("Hallo Wereld2");
+  TextBox1.Text = _printer.PrintStatus.ToString();
+}
+```
+
+- Run de code. Wat is de waarde in de textbox? Door geen await aan te roepen hebben we parallele code gecreeerd. Eerder hebben we gezegd dat instance classes niet thread safe hoeven te zijn. Dat geldt ook i.c.m. async. Tenzij anders gedocumenteerd door de programmeur mag je dus niet `PrintAsync` aanroepen tenzij de eerste `PrintAsync` klaar is. Je moet dus een nieuw `Printer` object creeren wil je 2 prints parallel uitvoeren.
+
