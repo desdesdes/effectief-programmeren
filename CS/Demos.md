@@ -774,8 +774,67 @@
     transaction.Commit();
   }
   ```
+## Demo 13: Exceptions
 
-## Demo 13: Parallel
+- Laat de `Runner` zien. Run `demos.exe` vanaf de console. Laat zien dat de exception.ToString naar de console word geschreven. Standaard exception handling in .NET zal de applicatie afbreken bij een onverwachte fout en deze loggen (eventlog) of weergeven. Leg uit dat het logisch is dat je niet kan doorwerken met een overwachte fout omdat de staat van je applicatie onbekend is.
+- Zet een try catch blok (lege catch) om de `ThrowException();` aanroep. Run de code nu. Let uit dat dit zeer gevaarlijke code is. Wat als er een out of memory exception optreed? Als je **echt** dit wilt doen documenteer de catch en zorg dat in de catch met een flag de ingeslikte exception wordt gelogd met een vorm van devtracing.
+
+Voor een voorbeeld van devtracing zie de `MyEventSource` class. Zet `MyEventSource.Log.DevTrace` in de catch.
+
+Wat als je op globaal niveau de exception wilt opvangen? Dit kan door de `AppDomain.CurrentDomain.UnhandledException` te gebruiken. Voeg de volgende code toe in de `Runner.RunMe`:
+
+```csharp
+    AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+    {
+      var exception = e.ExceptionObject as Exception;
+      if(exception != null)
+      {
+        File.WriteAllText("error.txt", "Unhandled exception: " + exception);
+      }
+    };
+```
+
+- Zet nu de volgende code in de `Runner.RunMe`:
+
+```csharp
+    var t = new Thread(ThrowException);
+    t.Start();
+
+    Console.ReadKey();
+```
+
+- Run de code. Wat gebeurd er? De applicatie crasht. Waarom? Ook bij een fout op een andere thread is de staat van de applicatie onbekend. De applicatie kan niet verder gaan. Dit is een bewuste keuze van Microsoft. Je kunt dit gedrag wel aanpassen, maar dat raden we af. Deze exception kan je ook opvangen door de `Thread.CurrentThread.UnhandledException` te gebruiken. Maar dan zit je op een andere thread, dus je kan in `Thread.CurrentThread.UnhandledException` eigenlijk geen ui tonen, omdat je potentieel op een andere thread zit. Daarnaast kan je ook een outofmemory hebben, dus de code in de UnhandledException handler moet klein en simpel zijn.
+- Voeg de volgende code toe in de `Runner.RunMe`:
+```csharp
+    Thread.CurrentThread.UnhandledException += (sender, e) =>
+    {
+      var exception = e.ExceptionObject as Exception;
+      if(exception != null)
+      {
+        File.WriteAllText("error.txt", "Unhandled thread exception: " + exception);
+      }
+    };
+```
+- Pas de code aan naar:
+
+```csharp
+    Task.Run(() =>
+    {
+      ThrowException();
+    });
+
+    Console.ReadKey();\
+```
+
+- Run de code. Wat gebeurd er? De applicatie crasht niet. Waarom? Vreemd genoeg heeft Microsoft dit gedrag aangepast voor de Task. Dit is erg vreemd en we raden dus ook aan om bij unhandeld task exceptions toch de applicatie te laten crashen. Dit kan door `TaskScheduler.UnobservedTaskException` op te vangen en een actie te ondernemen. Bijvoorbeeld door daar een `Environment.Exit` aan te roepen.
+
+- Gebruik je 3de of ui partij frameworks dan is het goed om te weten dat deze vaak ook speciale exception handling hebben. Zo heeft wpf `App.DispatcherUnhandledException` om alle exception in ui acties af te kunenn vangen. Of `RxApp.DefaultExceptionHandler` om alle exceptions vanuit Rx af te vangen.
+
+- We willen nu een custom exception maken met een extra property. Maak een nieuwe class aan `MyCustomException` en laat deze afleiden van `Exception`. Voeg een property `ErrorCode` toe. Pas de constructor aan zodat deze de ErrorCode kan instellen.
+
+- Throw de exception en laat de app crashen. Je ziet nu dat in de informatie op de console de ErrorCode property niet wordt weergegeven. Dit komt omdat de `Exception.ToString()` methode deze property niet doorgeeft. Tip is bij het bouwen van custom exception properties altijd ToString() te overriden. Helaas heeft microsoft geen standaard helper hiervoor, maar je kunt het zelf maken. Toon de `MyException` class
+
+## Demo 14: Parallel
 
 ### Geen await zorgt voor parallel
 
