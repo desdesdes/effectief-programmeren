@@ -10,7 +10,6 @@ Woordenboek
 |Woord|Betekenis|
 |---|---|
 |Overloading|Het definiëren van meerdere methoden met dezelfde naam, maar met verschillende parameters.|
-|Extern|Verwijst naar een methode of functie die buiten je eigen assembly te benaderen is, dit omvat dus alles met uitzondering van `private` en `internal`. `protected internal` is ook extern.|
 
 #### G001: Regels moeten te allen tijde worden gevolgd
 
@@ -364,12 +363,12 @@ Gooi nooit exceptions vanuit `static` constructors (`Shared` in VB), omdat ontwi
 
 ### Velden
 
-#### D005: Declareer velden nooit als extern
+#### D005: Declareer velden nooit als niet-private
 
-Velden mogen nooit als extern worden gedeclareerd.
+Velden mogen nooit als niet private worden gedeclareerd. Gebruik altijd een property.
 
 Uitzonderingen:
-- `static` readonly velden en constanten, die elke geschikte toegankelijkheid mogen hebben.
+- `static readonly` velden en constanten, die elke geschikte toegankelijkheid mogen hebben.
 
 Niet-private velden gebruiken geen underscore-prefix, maar worden benoemd als een property (Pascal-cased).
 
@@ -415,7 +414,7 @@ Je moet er niet van uitgaan dat een instantie van een type thread-safe is, tenzi
 
 #### D012: Plaats externe types op het namespace-niveau in plaats van binnen een ander type
 
-Plaats de externe types op het namespace-niveau, niet op klasseniveau.
+Plaats de externe types op het namespace-niveau, niet op klasseniveau. Extern is alles m.u.v. `private` of `internal`.
 
 Uitzonderingen: private klassen, structs, enums en delegates moeten genest zijn binnen een ander type.
 
@@ -1069,20 +1068,9 @@ End Class
 
 Let op dat een *enum* vaak kan worden gebruikt voor bepaalde soorten symbolische constanten. Zorg ervoor dat een constante waarde een echte constante is (zoals natuurlijke constanten, bijv. het aantal dagen in een week of het aantal dagen in een jaar of schrikkeljaar), als een publieke constante wordt gewijzigd, moeten alle aanroepers opnieuw worden gecompileerd. Een item een constante maken zorgt ervoor dat er maar één keer geheugen wordt toegewezen.
 
-### Velden
-
-#### D040: Declareer velden nooit als extern
-
-Velden mogen nooit als extern worden gedeclareerd.
-
-Uitzonderingen:
-- `static readonly` velden en constanten, die elke geschikte toegankelijkheid mogen hebben.
-
-Niet-private velden gebruiken geen underscore-prefix, maar worden benoemd als een property (Pascal-cased).
-
 ### Methoden
 
-#### D041: Gebruik dynamische binding om onderscheid te maken tussen types
+#### D040: Gebruik dynamische binding om onderscheid te maken tussen types
 
 Dit is een algemeen OO-principe. Let op dat het meestal een ontwerpfout is om een selectie-statement te schrijven dat het type van een instantie opvraagt (sleutelwoorden *typeof, is*).
 
@@ -1145,7 +1133,7 @@ End Sub
 Uitzonderingen:
 - Het gebruik van een selectie-statement om te bepalen of sommige instanties een of meer **optionele** interfaces implementeren, is echter een geldige constructie.
 
-#### D042: Als je de mogelijkheid moet bieden om een methode te overschrijven, maak dan alleen de meest complete overload virtueel en definieer de andere operaties in termen daarvan
+#### D041: Als je de mogelijkheid moet bieden om een methode te overschrijven, maak dan alleen de meest complete overload virtueel en definieer de andere operaties in termen daarvan
 
 Het gebruik van het hieronder gedemonstreerde patroon vereist dat een afgeleide klasse alleen de virtuele methode overschrijft. Aangezien alle andere methoden worden geïmplementeerd door de meest complete overload aan te roepen, zullen ze automatisch de nieuwe implementatie gebruiken die door de afgeleide klasse wordt geleverd.
 
@@ -1198,13 +1186,13 @@ Class MultipleOverrideDemo
 End Class
 ```
 
-#### D043: Gebruik geen operator-overloading
+#### D042: Gebruik geen operator-overloading
 
 We raden aan om geen operator-overloading te gebruiken, alleen op primitieve types.
 
 Zie [Microsoft-aanbevelingen](http://msdn.microsoft.com/en-us/library/ms229032\(v=vs.110\).aspx) over dit onderwerp.
 
-#### D044: Wanneer een property te gebruiken in plaats van een methode
+#### D043: Wanneer een property te gebruiken in plaats van een methode
 
 Een property moet worden overwogen wanneer:
 
@@ -1218,7 +1206,7 @@ Een property moet worden overwogen wanneer:
 
 Overweeg bij het gebruik van properties een propertychanged-event te gebruiken in plaats van een changed-event voor elke property. Ook mogen properties alleen in zeer uitzonderlijke gevallen fouten retourneren. In een normaal scenario mag een property geen fout retourneren. Als een property alleen een zinnig getal kan retourneren nadat een bepaalde methode is uitgevoerd, retourneer dan een standaardwaarde of `null` totdat de methode is aangeroepen. Retourneer geen fout.
 
-#### D045: Gebruik geen properties om een array van waarden op te halen of in te stellen
+#### D044: Gebruik geen properties om een array van waarden op te halen of in te stellen
 
 Dit zorgt ervoor dat property-waarden buiten de bevattende klasse kunnen worden gewijzigd. Stel de waarden bloot als een readonly type (bevat data in een readonly type) of gebruik een methode die een kloon van de data blootstelt. Stel geen IEnumberable<> van dezelfde array bloot, omdat deze gewoon terug kan worden gecast naar de array en kan worden gewijzigd.
 
@@ -1274,7 +1262,7 @@ End Class
 
 ### Collecties
 
-#### D046: Retourneer geen `null` (`Nothing` in VB) van niet-private properties of methoden om een lege collectie of IEnumerable aan te duiden
+#### D045: Retourneer geen `null` (`Nothing` in VB) van niet-private properties of methoden om een lege collectie of IEnumerable aan te duiden
 
 Retourneer altijd een leeg collectietype in plaats van `null` (`Nothing` in VB), om het gebruik van Linq en andere methoden te vergemakkelijken zonder de noodzaak om elke collectie op `null` te controleren. Dit voorkomt ook moeilijk te vinden bugs.
 
@@ -1314,7 +1302,7 @@ End Property
 
 ### Namespace
 
-#### D047: Benoem namespaces volgens een vooraf gedefinieerd patroon en logische feature
+#### D046: Benoem namespaces volgens een vooraf gedefinieerd patroon en logische feature
 
 \<Bedrijf>.(\<Product>|\<Technologie>)[.\<Feature>][.\<Subnamespace>]
 
@@ -1327,7 +1315,7 @@ End Property
 
 ### Assemblies
 
-#### D048: Benoem assemblies volgens een vooraf gedefinieerd patroon en de grote brokken functionaliteit
+#### D047: Benoem assemblies volgens een vooraf gedefinieerd patroon en de grote brokken functionaliteit
 
 Begin alle assembly-namen met \<Bedrijf>.\<Product>. Scheid subdelen met een punt(.). Bijvoorbeeld: Microsoft.Office.Excel.
 
@@ -1337,11 +1325,11 @@ Assemblynamen hoeven niet overeen te komen met namespace-namen, maar het is rede
 
 ## OO-principes
 
-#### D049: Het moet mogelijk zijn om een verwijzing naar een instantie van een afgeleide klasse te gebruiken waar een verwijzing naar de basisklasse van die instantie wordt gebruikt
+#### D048: Het moet mogelijk zijn om een verwijzing naar een instantie van een afgeleide klasse te gebruiken waar een verwijzing naar de basisklasse van die instantie wordt gebruikt
 
 Deze regel staat bekend als het Liskov Substitution Principle, vaak afgekort tot LSP. Let op dat een interface in deze context ook als een basisklasse wordt beschouwd.
 
-#### D050: Alle varianten van een overbelaste methode moeten voor hetzelfde doel worden gebruikt en vergelijkbaar gedrag hebben
+#### D049: Alle varianten van een overbelaste methode moeten voor hetzelfde doel worden gebruikt en vergelijkbaar gedrag hebben
 
 Anders handelen is in strijd met het Principle of Least Surprise. Als algemene regel moet je alleen overloads gebruiken als de overloads elkaar aanroepen en geen extra gedrag hebben.
 

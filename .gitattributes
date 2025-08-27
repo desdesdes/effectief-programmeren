@@ -1,0 +1,71 @@
+# AFAS gitattributes V2.0 03-04-2025
+# Do not change! Should only be changes by AFAS .net standards workgroup
+
+# More info: https://docs.afas.dev/dev/handleidingen/editorconfig
+# General properties: https://github.com/gitattributes/gitattributes
+
+# Set default behavior to automatically normalize line endings.
+* text=auto
+
+*.doc  diff=astextplain
+*.DOC	diff=astextplain
+*.docx	diff=astextplain
+*.DOCX	diff=astextplain
+*.dot	diff=astextplain
+*.DOT	diff=astextplain
+*.pdf	diff=astextplain
+*.PDF	diff=astextplain
+*.rtf	diff=astextplain
+*.RTF	diff=astextplain
+
+*.jpg  	binary
+*.png 	binary
+*.gif 	binary
+
+*.lss 	text
+
+
+# code files
+*.cs text diff=csharp
+*.vb text
+*.resx text
+*.c text
+*.cpp text
+*.h text
+*.hxx text
+*.py text
+*.java text
+*.html text
+*.htm text
+*.css text
+*.scss text
+*.less text
+*.js text
+*.sql text
+*.php text
+*.m text
+*.asm text
+*.fs text
+
+*.csproj text
+*.vbproj text
+*.slnf text
+*.sln text eol=crlf
+
+# Shell scripts unix
+# Force bash scripts to always use lf line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will work.
+*.in text eol=lf
+*.sh text eol=lf
+
+# Shell scripts windows
+# Likewise, force cmd and batch scripts to always use crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# package manager files
+package.json      text eol=lf
+package-lock.json text eol=lf -diff
+pnpm-lock.yaml    text eol=lf -diff
+

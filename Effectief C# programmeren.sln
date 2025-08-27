@@ -10,7 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{26D56CC4-B73A-46DE-9320-20CE109FC47D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		Code conventions.md = Code conventions.md
+		Code conventies.md = Code conventies.md
 		CS\Demos.md = CS\Demos.md
 		Directory.Build.props = Directory.Build.props
 		CS\Effectief C# programmeren.pptx = CS\Effectief C# programmeren.pptx
@@ -37,17 +37,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A838324-BE79-4219-B810-8810375BAEDB}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://pdtfs01.ad.afas.nl/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CS\\Demos\\Demos.csproj
-		SccProjectName1 = CS/Demos
-		SccLocalPath1 = CS\\Demos
-		SccProjectUniqueName2 = CS\\Exercises\\Exercises.csproj
-		SccProjectName2 = CS/Exercises
-		SccLocalPath2 = CS\\Exercises
 	EndGlobalSection
 EndGlobal
