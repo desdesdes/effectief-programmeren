@@ -1,27 +1,25 @@
-# Code standaarden
+# Code conventies
 
 # Algemeen
 
-## Algemeen
+De ontwikkelstandaarden bestaan uit regels en aanbevelingen met betrekking tot specifieke ontwikkelonderwerpen. Elke ontwikkelaar dient bekend te zijn met deze standaarden en zich daaraan te houden tijdens het ontwikkelen. De standaarden zijn gebaseerd op de [Microsoft coding conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions) en de [Microsoft Framework Design Guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/).
 
-De ontwikkelstandaarden bestaan uit regels en aanbevelingen met betrekking tot specifieke ontwikkelonderwerpen. Elke ontwikkelaar dient bekend te zijn met en zich te houden aan deze standaarden tijdens het ontwikkelen. De standaarden zijn gebaseerd op [Microsoft coding conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions) en [Microsoft Framework design guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/).
-
-Woordenboek
+Woordenlijst
 |Woord|Betekenis|
 |---|---|
 |Overloading|Het definiëren van meerdere methoden met dezelfde naam, maar met verschillende parameters.|
 
 #### G001: Regels moeten te allen tijde worden gevolgd
 
-Uitzonderingen op regels zijn niet toegestaan. Er kan een verzoek worden ingediend om de regel te wijzigen, of de code moet worden aangepast zodat deze aan de regel voldoet.
+Uitzonderingen op regels zijn niet toegestaan. Er kan wel een verzoek worden ingediend om een regel te wijzigen, of de code moet worden aangepast zodat deze aan de regel voldoet.
 
-Sommige regels worden gevalideerd tijdens statische code analyse. Wanneer de code niet aan deze regels voldoet, zal de codeanalyse fouten opleveren. Daarnaast worden veel technische regels die niet in de ontwikkelstandaarden zijn gedocumenteerd, gecontroleerd tijdens statische codeanalyse.
+Sommige regels worden gevalideerd tijdens statische code-analyse. Wanneer de code niet aan deze regels voldoet, zal de codeanalyse fouten opleveren. Daarnaast worden veel technische regels die niet in de ontwikkelstandaarden zijn gedocumenteerd, gecontroleerd tijdens statische code-analyse.
 
 #### G002: Elke keer dat een aanbeveling niet wordt gevolgd, moet dit een goede reden hebben en gedocumenteerd worden
 
-Uitzonderingen op aanbevelingen zijn alleen in uitzonderlijke gevallen toegestaan. Indien nodig kan een verzoek worden ingediend om een aanbeveling te wijzigen. Uitzonderingen op aanbevelingen moeten tijdens een code review worden besproken. Goede redenen omvatten geen persoonlijke stijlvoorkeuren. Wanneer een aanbeveling niet wordt gevolgd, moet dit in de code of in de onderdrukking van de codeanalysewaarschuwing worden gedocumenteerd.
+Uitzonderingen op aanbevelingen zijn alleen in bijzondere gevallen toegestaan. Indien nodig kan een verzoek worden ingediend om een aanbeveling te wijzigen. Uitzonderingen moeten tijdens een code review worden besproken; goede redenen zijn niet persoonlijke stijlvoorkeuren. Wanneer een aanbeveling niet wordt gevolgd, moet dit in de code of in de onderdrukking van de code-analysewaarschuwing worden gedocumenteerd.
 
-Sommige aanbevelingen worden gevalideerd tijdens statische codeanalyse in Visual Studio. Wanneer de code niet aan deze aanbevelingen voldoet, zal de codeanalyse een waarschuwing geven. Daarnaast worden veel technische regels die niet in de ontwikkelstandaarden zijn gedocumenteerd, gecontroleerd tijdens statische codeanalyse. In uitzonderlijke gevallen kunnen deze waarschuwingen worden onderdrukt. Onderdrukkingen moeten zo dicht mogelijk bij het probleem worden gemaakt en een rechtvaardiging bevatten. Als je een globale onderdrukking nodig hebt, maak of gebruik dan een *GlobalSuppressions.cs*-bestand op het hoofdniveau van het project, maar gebruik dit alleen als er geen andere optie is.
+Sommige aanbevelingen worden gevalideerd tijdens statische code-analyse in Visual Studio. Wanneer de code niet aan deze aanbevelingen voldoet, zal de codeanalyse een waarschuwing geven. Daarnaast worden veel technische regels die niet in de ontwikkelstandaarden zijn gedocumenteerd, gecontroleerd tijdens statische code-analyse. In uitzonderlijke gevallen kunnen waarschuwingen worden onderdrukt. Onderdrukkingen moeten zo dicht mogelijk bij het probleem worden geplaatst en een motivatie bevatten. Als je een globale onderdrukking nodig hebt, maak of gebruik dan een *GlobalSuppressions.cs*-bestand op het hoofdniveau van het project, maar gebruik dit alleen als er geen andere optie is.
 
 #### G003: Voorzie regel- en aanbevelingsnummers van het voorvoegsel dat overeenkomt met het onderwerp en verander het nummer nooit
 
@@ -102,13 +100,13 @@ Function ReadDouble() As Double;
 Function ReadInt64() As Long;
 ```
 
-**Opmerking:** de typenamen die in de Read-methoden worden gebruikt, zijn de universele typenamen!!!
+Opmerking: de typenamen die in de Read-methoden worden gebruikt, zijn de universele typenamen.
 
-#### N003: Gebruik GEEN Hongaarse notatie
+#### N003: Gebruik geen Hongaarse notatie
 
 Gebruik geen Hongaarse notatie of voeg geen andere type-identificatie toe aan identifiers. Het gebruik van Hongaarse notatie wordt afgeraden door bedrijven als Microsoft omdat het een programmeertaalafhankelijkheid introduceert en onderhoudsactiviteiten bemoeilijkt. Gebruik alleen de naamgevingstoevoegingen zoals beschreven in dit document.
 
-#### N004: Gebruik GEEN underscores
+#### N004: Gebruik geen underscores
 
 Underscores zijn niet toegestaan in namen.
 
@@ -116,7 +114,7 @@ Uitzonderingen:
 - Private fields *moeten* beginnen met een underscore-prefix
 - Eventhandlers, bijv. okButton\_OnClick, ConfigProcessing\_Completed
 
-#### N005: Gebruik GEEN standaard voor- of achtervoegsel voor identifiers
+#### N005: Gebruik geen standaard voor- of achtervoegsel voor identifiers
 
 Voorzie klassen niet van het voor- of achtervoegsel *Class*, methoden met *Method*, structs met *Struct*, enums met *Enum*, delegates met *Delegate* etc.
 
@@ -124,13 +122,13 @@ Voorzie klassen niet van het voor- of achtervoegsel *Class*, methoden met *Metho
 
 Plaats bovendien niet meer dan één top-level klasse in één bronbestand. Dit verbetert de vindbaarheid van classes.
 
-Gebruik alleen `partial` classes als het andere deel van de class gegenereerd wordt. Gebruik geen partial om een class over meerdere uitgebrogrammeerde bestanden te verdelen. Dit maakt het terugzoeken van code erg lastig en debuggen met source links via symbols vrijwel onmogelijk.
+Gebruik alleen `partial` classes als het andere deel van de class gegenereerd wordt. Gebruik geen partial om een class over meerdere uitprogrammeerde bestanden te verdelen. Dit maakt het terugzoeken van code erg lastig en debuggen met source links via symbols vrijwel onmogelijk.
 
 #### N007: Gebruik vragende namen voor booleaanse velden, variabelen, properties en parameters
 
 De naam van booleaanse velden, variabelen, properties en parameters moet altijd bestaan uit een werkwoord (Is, Has, Does, Can, etc.) en een bijvoeglijk naamwoord of zelfstandig naamwoord (Enabled, Visible, Dirty, UpdateNeeded, Children, etc.), bijvoorbeeld: IsEnabled, IsVisible, IsDirty, IsUpdateNeeded, HasChildren. Het moet mogelijk zijn om de naam te gebruiken als een vraag met twee mogelijke antwoorden: ja of nee. Als het (logisch) mogelijk is om de naam met 'Is' te beginnen, dan moet 'Is' worden gebruikt.
 
-#### N008: Gebruik GEEN negaties
+#### N008: Gebruik geen negaties
 
 Gebruik nooit (impliciete) negaties bij het benoemen van variabelen, functies, properties, etc.
 
@@ -209,7 +207,7 @@ Voorbeeld: Als een methode GetValue() heet, moet deze altijd de waarde retourner
 
 Try: Als een methode kan mislukken vanwege bedrijfslogica (bijv. het wordt verwacht te mislukken), overweeg dan een equivalente methode toe te voegen die het mogelijk maakt om op succes te controleren zonder dat de exception wordt gegooid. Noem deze methode TryXxx(), die true retourneert voor succes/false voor mislukking indien mogelijk.
 
-OrDefault: Soms wordt je code flow veel simpeler als je een functie hebt die de standaard waarde van een type teruggeeft i.p.v. een exceptions. Bv het lezen van een int uit een collectie waarbij je de waarde 0 mag gebruiken als deze niet in de collectie bestaat. Geef deze functie een naam waarmee het duidelijk is dat het de standaard waarde retourneert, bijv. GetValueOrDefault().
+OrDefault: Soms wordt je codeflow veel eenvoudiger als je een functie hebt die de standaardwaarde van een type teruggeeft in plaats van een exception. Bijvoorbeeld bij het lezen van een int uit een collectie waarbij 0 mag worden gebruikt als de sleutel niet bestaat. Geef deze functie een duidelijke naam, bijvoorbeeld GetValueOrDefault().
 
 Voorbeeld:
 
@@ -276,7 +274,7 @@ End Function
 
 Gebruik eerst een werkwoord gevolgd door een zelfstandig naamwoord, bijvoorbeeld: GetEmployeeName, UpdateEmployee, IsValidUserName. Merk op dat properties niet aan deze regel hoeven te voldoen.
 
-#### N018: Voeg GEEN 'Callback' of een vergelijkbaar achtervoegsel toe aan callback-methoden
+#### N018: Voeg geen 'Callback' of een vergelijkbaar achtervoegsel toe aan callback-methoden
 
 Voeg geen achtervoegsels zoals *Callback* of *CB* toe om aan te geven dat methoden via een callback-delegate worden aangeroepen. Je kunt geen aannames doen over of methoden via een delegate worden aangeroepen of niet. Een eindgebruiker kan besluiten om Asynchronous Delegate Invocation te gebruiken om de methode uit te voeren.
 
@@ -372,13 +370,14 @@ Uitzonderingen:
 
 Niet-private velden gebruiken geen underscore-prefix, maar worden benoemd als een property (Pascal-cased).
 
-#### D006: `static` methoden moeten veilig zijn voor parallel gebruik (`shared` / `module` in VB), instance methoden *kunnen* veilig zijn. {#D006}
 
-Documenteer het als een klasse-instantie of bepaalde methodes parallel gebruikt mogen gebruikt is die niet gedocumenteerd dan is dit niet toegestaan.
+#### D006: `static` methoden moeten veilig zijn voor parallel gebruik (`Shared` / `Module` in VB); instance-methoden moeten thread-safe zijn. {#D006}
 
-Een `static` functie die niet parallel gebruikt kan worden gebruikt, mag niet bestaan.
+Documenteer of een klasse-instantie of bepaalde methoden parallel gebruikt mogen worden. Als dit niet gedocumenteerd is, dan is parallel gebruik niet toegestaan.
 
-Dit betekent in feite dat je geen `static` velden (`shared` velden of `module` velden in VB) moet gebruiken in een methode, tenzij het veld readonly en onveranderlijk is.
+Een `static` functie die niet veilig voor parallel gebruik is, mag niet bestaan.
+
+Dit betekent in feite dat je geen `static` velden (`Shared` velden of `Module` velden in VB) moet gebruiken in een methode, tenzij het veld readonly en onveranderlijk is.
 
 Parallel betekent dat meerdere aanroepen gelijktijdig bezig kunnen zijn door meerdere threads te gebruiken of door niet te wachten tot een async functie klaar is, dus async aanroep zonder await.
 
@@ -388,9 +387,9 @@ Implementeer altijd een property getter of gebruik in plaats daarvan een methode
 
 ### Methoden
 
-#### D008: Maak functies `static` (`shared` in VB) als ze stateless en niet-exposed zijn
+#### D008: Maak functies `static` (`Shared` in VB) als ze stateless en niet-exposed zijn
 
-Een niet-exposed methode die geen instance fields gebruikt, moet `static` zijn (`shared` in VB). Een exposed methode die geen instance fields gebruikt, moet `static` zijn (`shared` in VB) als dit gepast is. Dit betekent dat het `static` moet worden gemaakt als je niet verwacht dat het in de toekomst instance fields zal gebruiken.
+Een niet-exposed methode die geen instance fields gebruikt, moet `static` zijn (`Shared` in VB). Een exposed methode die geen instance fields gebruikt, moet `static` zijn (`Shared` in VB) als dit gepast is. Dit betekent dat het `static` moet worden gemaakt als je niet verwacht dat het in de toekomst instance fields zal gebruiken.
 
 #### D009: Als je een public methode en een protected methode hebt met dezelfde naam, voeg dan het achtervoegsel *Core* of *Internal* toe aan de protected methode
 
@@ -435,8 +434,8 @@ Onthoud dat een *struct* niet kan worden afgeleid en geen door de gebruiker gede
 Aangezien extensiemethoden zichtbaar zijn in de hele namespace waarin ze zijn gedefinieerd, moeten ze overal in die namespace dezelfde betekenis en relevant gebruik hebben.
 
 Dus als een extensiemethode alleen relevant is voor een specifieke klasse, moet deze in dezelfde namespace als die klasse worden gedefinieerd. Als het relevant is voor een specifieke set klassen, moet het in dezelfde namespace als die klassen worden gedefinieerd. Als het relevant is voor een specifieke set klassen in een specifieke context, moet het in dezelfde namespace als die klassen in die context worden gedefinieerd.
-
-Dit maakt het gemakkelijk om een specifieke extensiemethode te vinden met intellisense, maar voorkomt ook dat intellisense wordt vervuild met irrelevante extensiemethoden.
+ 
+ Dit maakt het gemakkelijk om een specifieke extensiemethode te vinden met IntelliSense, en voorkomt dat IntelliSense vervuild raakt met irrelevante extensiemethoden.
 
 Stel je hebt een POCO-type Employee dat leeft in Afas.MyApp.Hrm.Employee. We hebben een extensiemethode ToJson die het type omzet naar een JSON-string.
 
@@ -563,17 +562,17 @@ public class Connection
 
 ```vbnet
 public class Connection
-    'Event definitie
+    ' Event definitie
     Public Event Closed As EventHandler
 
     ' Methode die het event veroorzaakt
     Public Sub Close()
         ' Doe iets en raise dan het event
-        RaiseEvent Closed(Me, EventArgs.Empty)
+        OnClosed(EventArgs.Empty)
     End Sub
 
     ' Methode die het Closed event raiset.
-    Public Sub OnClosed(e As EventArgs)
+    Protected Overridable Sub OnClosed(e As EventArgs)
         RaiseEvent Closed(Me, e)
     End Sub
 
@@ -616,13 +615,13 @@ public class MyEventArgs : EventArgs //Afleiden van EventArgs
 
 ```vbnet
 Public Class MyEventArgs
-  Inherits EventArgs 'Afleiden van EventArgs
+    Inherits EventArgs ' Afleiden van EventArgs
 
-  Public Sub New(extraInfo as String)
-    _extraInfo = extraInfo
-  End Sub
+    Public Sub New(extraInfo As String)
+        _extraInfo = extraInfo
+    End Sub
 
-  Public ReadOnly Property ExtraInfo As String
+    Public ReadOnly Property ExtraInfo As String
 End Class
 ```
 
@@ -830,7 +829,7 @@ Bijvoorbeeld: FileNotFoundException.
 
 #### D032: Voorzie collecties van het juiste achtervoegsel
 
-Voorzie de naam van types die IEnumberable implementeren van het achtervoegsel van het gedrag dat ze implementeren:
+  Voorzie de naam van types die IEnumerable implementeren van het achtervoegsel van het gedrag dat ze implementeren:
 
 - Sleutel/Waarde-achtig gedrag: Dictionary
 - Stack-achtig gedrag: Stack
@@ -1208,18 +1207,18 @@ Overweeg bij het gebruik van properties een propertychanged-event te gebruiken i
 
 #### D044: Gebruik geen properties om een array van waarden op te halen of in te stellen
 
-Dit zorgt ervoor dat property-waarden buiten de bevattende klasse kunnen worden gewijzigd. Stel de waarden bloot als een readonly type (bevat data in een readonly type) of gebruik een methode die een kloon van de data blootstelt. Stel geen IEnumberable<> van dezelfde array bloot, omdat deze gewoon terug kan worden gecast naar de array en kan worden gewijzigd.
+Dit zorgt ervoor dat property-waarden buiten de bevattende klasse kunnen worden gewijzigd. Stel de waarden bloot als een readonly type (bijv. een ReadOnlyCollection) of gebruik een methode die een kloon van de data teruggeeft. Stel geen IEnumerable<> van dezelfde array bloot, omdat deze eenvoudig terug kan worden gecast naar de array en zo gewijzigd kan worden.
 
 ```csharp
 class MyClass
 {
     private string[] _data;
 
-    // Fout, resultaat kan worden gecast naar string[]
-    public IEnumerable<string> Data
-    {
-        get { return _data; } // Fout, het gebruik van _data.GetEnumerator() zou dit oplossen
-    }
+  // Fout, retourneert null wanneer _data null is
+  public IEnumerable<string> Data
+  {
+    get { return _data; } // Fout, het gebruik van _data.GetEnumerator() zou dit oplossen
+  }
 
     // Ok, maar dit kan traag zijn, dus het zou een methode moeten zijn in plaats van een property
     public string[] GetData()
@@ -1308,7 +1307,7 @@ End Property
 
 - Voorzie namespace-namen van een bedrijfsnaam om te voorkomen dat namespaces van verschillende bedrijven dezelfde naam hebben.
 - Gebruik een stabiele, versie-onafhankelijke productnaam op het tweede niveau van een namespace-naam.
-- Gebruik GEEN organisatorische hiërarchieën als basis voor namen in namespace-hiërarchieën, omdat groepsnamen binnen bedrijven de neiging hebben van korte duur te zijn. Organiseer de hiërarchie van namespaces rond groepen gerelateerde technologieën.
+ - Gebruik geen organisatorische hiërarchieën als basis voor namen in namespace-hiërarchieën, omdat groepsnamen binnen bedrijven de neiging hebben van korte duur te zijn. Organiseer de hiërarchie van namespaces rond groepen gerelateerde technologieën.
 - Geef waar van toepassing de voorkeur aan meervoudige namespace-namen. Gebruik bijvoorbeeld System.Collections in plaats van System.Collection. Merknamen en acroniemen zijn echter uitzonderingen op deze regel. Gebruik bijvoorbeeld System.IO in plaats van System.IOs.
 - Gebruik NIET dezelfde naam voor een namespace en een type in die namespace. Dit resulteert in moeilijk te gebruiken types.
 - Overweeg dezelfde structuur te gebruiken als Microsoft voor hun namespaces. Dit maakt het voor ontwikkelaars gemakkelijker om de code te vinden.
@@ -1424,9 +1423,9 @@ Voorbeeld:
 int x = 0, y = 0, z = 0;
 var list = new List<int>() { x, y };
 
-list[x] = x++; // Fout, moeilijk te lezen (wordt list[0] of list[1] ingesteld en met 1 of 2)
-y = y++ + 2; // Fout, moeilijk te lezen (is y 2 of 3), overweeg y += 2 te gebruiken
-z = ++z + 2; // Fout, moeilijk te lezen (is z 2 of 3), overweeg z += 3 te gebruiken
+list[x] = x++; // Fout, moeilijk te lezen (wordt list[0] of list[1] ingesteld en met 1 of 2?)
+y = y++ + 2; // Fout, moeilijk te lezen (is y 2 of 3?), overweeg y += 2 te gebruiken
+z = ++z + 2; // Fout, moeilijk te lezen (is z 2 of 3?), overweeg z += 3 te gebruiken
 ```
 
 ## Inspringen en afbreken
@@ -1617,7 +1616,7 @@ Dus een naam met een &#223; wordt op een andere positie getoond in een Duitse ap
 
 #### M015: Gebruik XML-commentaar voor het beschrijven van methoden, klassen, velden en alle publieke leden
 
-Kan worden opgepikt door tools zoals Visual Studio om intellisense en helpgeneratie te bieden.
+Kan worden opgepikt door tools zoals Visual Studio om IntelliSense en helpgeneratie te bieden.
 
 #### M016: Zorg voor schone commentaren
 
