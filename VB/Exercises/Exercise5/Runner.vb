@@ -1,4 +1,4 @@
-﻿Imports System.Xml
+Imports System.Xml
 
 Namespace Exercises.Exercise5
   Class Runner

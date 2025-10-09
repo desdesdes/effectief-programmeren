@@ -1,4 +1,4 @@
-﻿Namespace Construction
+Namespace Construction
   Class Ordering
     Dim _b As String = Log("b")
     Dim _a As String = Log("a")

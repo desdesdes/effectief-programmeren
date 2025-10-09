@@ -1,4 +1,4 @@
-﻿Namespace Exercises.Exercise4
+Namespace Exercises.Exercise4
   Class PersonRow
     Property Id As New AntaField(Of Guid)
     Property FirstName As New AntaField(Of String)

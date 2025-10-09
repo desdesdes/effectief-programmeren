@@ -1,4 +1,4 @@
-﻿namespace Demos.Json;
+namespace Demos.Json;
 
 class Persons : List<Person>
 {

@@ -1,4 +1,4 @@
-﻿Namespace Sql
+Namespace Sql
   Public Class Person
     Public Property Id As Guid
     Public Property FirstName As String

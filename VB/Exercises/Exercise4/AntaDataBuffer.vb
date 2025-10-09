@@ -1,4 +1,4 @@
-﻿Namespace Exercises.Exercise4
+Namespace Exercises.Exercise4
   Class AntaDataBuffer(Of T)
     Implements ICollection(Of T)
 

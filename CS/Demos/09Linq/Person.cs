@@ -1,4 +1,4 @@
-﻿namespace Demos.Linq;
+namespace Demos.Linq;
 
 class Person
 {

@@ -1,4 +1,4 @@
-﻿namespace Demos.StructuresAndClasses;
+namespace Demos.StructuresAndClasses;
 
 struct Point
 {

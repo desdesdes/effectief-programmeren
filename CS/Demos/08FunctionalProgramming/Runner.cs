@@ -1,4 +1,4 @@
-﻿using System.ServiceModel;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 
 namespace Demos.FunctionalProgramming;
@@ -23,7 +23,7 @@ static class Runner
 
     var sorter = new QuickSort<Person>();
 
-    foreach (var item in sorter.Sort(persons))
+    foreach(var item in sorter.Sort(persons))
     {
       Console.WriteLine($"{item.FirstName} {item.LastName}");
     }
@@ -36,7 +36,7 @@ static class Runner
 
     var factory = new ChannelFactory<IPrjService>(basicHttpBinding, endpointAddress);
     var service = factory.CreateChannel();
-    using (var outgoingScope = new OperationContextScope((IContextChannel)service))
+    using(var outgoingScope = new OperationContextScope((IContextChannel)service))
     {
       var messageHeadersElement = OperationContext.Current.OutgoingMessageHeaders;
       messageHeadersElement.Add(MessageHeader.CreateHeader("OnlyHandles200Response", "", true));
@@ -45,7 +45,7 @@ static class Runner
       {
         return service.Divide(12, 3);
       }
-      catch (QuotaExceededException)
+      catch(QuotaExceededException)
       {
         throw new Exception("Message too long.");
       }

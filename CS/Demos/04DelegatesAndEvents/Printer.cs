@@ -1,4 +1,4 @@
-﻿namespace Demos.DelegatesAndEvents;
+namespace Demos.DelegatesAndEvents;
 
 static class Printer
 {

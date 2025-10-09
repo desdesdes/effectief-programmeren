@@ -1,4 +1,4 @@
-﻿Namespace StructuresAndClasses
+Namespace StructuresAndClasses
 
   Structure Point
     Public Property X As Integer
@@ -7,7 +7,7 @@
 
   Module Runner
     Public Sub RunMe()
-     Dim p = New Point() With {.X = 3}
+      Dim p = New Point() With {.X = 3}
 
       Move(p)
 

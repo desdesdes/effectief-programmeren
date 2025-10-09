@@ -1,4 +1,4 @@
-﻿Namespace Linq
+Namespace Linq
   Class Runner
     Public Shared Sub RunMe()
       Dim persons As New List(Of Person)()

@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise4;
+namespace Exercises.Exercise4;
 
 class AntaField<T>
 {

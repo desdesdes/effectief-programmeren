@@ -1,4 +1,4 @@
-﻿namespace Demos.Parallel;
+namespace Demos.Parallel;
 
 internal class Printer
 {

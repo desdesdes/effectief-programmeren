@@ -1,4 +1,4 @@
-﻿Namespace Exercises.Exercise4
+Namespace Exercises.Exercise4
   Class Runner
     Private Shared _startTime As Date
     Private Shared _startSize As Long

@@ -1,4 +1,4 @@
-﻿Namespace FunctionalProgramming
+Namespace FunctionalProgramming
   Public Class QuickSort(Of T As IComparable(Of T))
     Public Function Sort(list As IList(Of T)) As IList(Of T)
       Dim newData = New List(Of T)(list.Count)

@@ -1,4 +1,4 @@
-﻿namespace Demos.Collecties;
+namespace Demos.Collecties;
 
 static class Runner
 {

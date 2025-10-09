@@ -1,4 +1,4 @@
-﻿namespace Demos.Linq;
+namespace Demos.Linq;
 
 static class Runner
 {

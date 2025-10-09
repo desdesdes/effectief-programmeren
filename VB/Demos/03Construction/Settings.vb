@@ -1,4 +1,4 @@
-﻿Namespace Construction
+Namespace Construction
   ''' <summary>
   ''' Class to hold and pass around settings, can also load and save settings
   ''' </summary>

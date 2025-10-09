@@ -1,4 +1,4 @@
-﻿Namespace DelegatesAndEvents
+Namespace DelegatesAndEvents
   Class ConsoleClient
     Public Sub Print()
       QueuePrintJob("Hallo world!")

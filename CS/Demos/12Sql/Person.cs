@@ -1,4 +1,4 @@
-﻿namespace Demos.Sql;
+namespace Demos.Sql;
 
 class Person
 {

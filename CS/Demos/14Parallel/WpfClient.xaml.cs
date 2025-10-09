@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,31 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Demos.Parallel
+namespace Demos.Parallel;
+
+/// <summary>
+/// Interaction logic for WpfClient.xaml
+/// </summary>
+public partial class WpfClient : Window
 {
-  /// <summary>
-  /// Interaction logic for WpfClient.xaml
-  /// </summary>
-  public partial class WpfClient : Window
+  Printer _printer = new Printer();
+
+  public WpfClient()
   {
-    Printer _printer = new Printer();
+    InitializeComponent();
+  }
 
-    public WpfClient()
-    {
-      InitializeComponent();
-    }
+  private async void StartButton_Click(object sender, RoutedEventArgs e)
+  {
+    _printer.Reset();
+    TextBox1.Text = _printer.PrintStatus.ToString();
+    await _printer.PrintAsync("Hallo Wereld");
+    TextBox1.Text = _printer.PrintStatus.ToString();
+  }
 
-    private async void StartButton_Click(object sender, RoutedEventArgs e)
-    {
-      _printer.Reset();
-      TextBox1.Text = _printer.PrintStatus.ToString();
-      await _printer.PrintAsync("Hallo Wereld");
-      TextBox1.Text = _printer.PrintStatus.ToString();
-    }
-
-    private void CloseButton_Click(object sender, RoutedEventArgs e)
-    {
-      Close();
-    }
+  private void CloseButton_Click(object sender, RoutedEventArgs e)
+  {
+    Close();
   }
 }

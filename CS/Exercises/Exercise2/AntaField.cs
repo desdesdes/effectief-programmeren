@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise2;
+namespace Exercises.Exercise2;
 
 class AntaField<T>
 {
@@ -10,7 +10,7 @@ class AntaField<T>
     {
       var stringValue = Value as string;
 
-      if (string.IsNullOrEmpty(stringValue))
+      if(string.IsNullOrEmpty(stringValue))
       {
         return stringValue;
       }

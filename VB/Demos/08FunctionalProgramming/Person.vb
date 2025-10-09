@@ -1,4 +1,4 @@
-﻿Namespace FunctionalProgramming
+Namespace FunctionalProgramming
   Class Person
     Implements IComparable(Of Person)
 

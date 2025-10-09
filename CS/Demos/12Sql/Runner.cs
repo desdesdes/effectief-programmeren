@@ -1,5 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
 using System.Data;
+using Microsoft.Data.SqlClient;
 
 namespace Demos.Sql;
 
@@ -36,7 +36,7 @@ static class Runner
     using var com = new SqlCommand($"select id, firstname, lastname from persons where firstname = '{searchValue}'", con);
 
     using var reader = com.ExecuteReader();
-    while (reader.Read())
+    while(reader.Read())
     {
       var person = new Person();
       person.Id = reader.GetGuid("Id");
@@ -59,7 +59,7 @@ static class Runner
     var table = new DataTable();
     table.Load(reader);
 
-    foreach (DataRow row in table.Rows)
+    foreach(DataRow row in table.Rows)
     {
       Console.WriteLine("{0} {1}", row["FirstName"], row["LastName"]);
     }

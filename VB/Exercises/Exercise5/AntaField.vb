@@ -1,4 +1,4 @@
-﻿Namespace Exercises.Exercise5
+Namespace Exercises.Exercise5
   Public Class AntaField(Of T)
     Public Property Value As T
 

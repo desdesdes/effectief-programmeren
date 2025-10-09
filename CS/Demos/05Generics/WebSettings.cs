@@ -1,4 +1,4 @@
-﻿namespace Demos.Generics;
+namespace Demos.Generics;
 
 class WebSettings : ISettings
 {

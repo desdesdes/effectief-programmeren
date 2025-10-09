@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise1;
+namespace Exercises.Exercise1;
 
 static class Runner
 {

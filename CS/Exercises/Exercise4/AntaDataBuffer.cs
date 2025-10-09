@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 
 namespace Exercises.Exercise4;
 
@@ -67,9 +67,9 @@ class AntaDataBuffer<T> : ICollection<T>
   {
     get
     {
-      foreach (var row in _rows)
+      foreach(var row in _rows)
       {
-        if (_idSelector(row) == index)
+        if(_idSelector(row) == index)
         {
           return row;
         }

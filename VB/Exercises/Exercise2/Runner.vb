@@ -1,4 +1,4 @@
-﻿Namespace Exercises.Exercise2
+Namespace Exercises.Exercise2
   Class Runner
     Shared Sub RunMe()
       Dim persons = New AntaDataBuffer(Of PersonRow)

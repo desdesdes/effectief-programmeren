@@ -1,4 +1,4 @@
-﻿Imports System.Threading
+Imports System.Threading
 
 Namespace ClassesAndModules
 

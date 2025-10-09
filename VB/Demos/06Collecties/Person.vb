@@ -1,4 +1,4 @@
-﻿Namespace Collecties
+Namespace Collecties
   Class Person
     Property Id As Guid
     Property FirstName As String

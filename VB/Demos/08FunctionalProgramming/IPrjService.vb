@@ -1,4 +1,4 @@
-﻿Imports System.ServiceModel
+Imports System.ServiceModel
 
 Namespace FunctionalProgramming
   <ServiceContract>

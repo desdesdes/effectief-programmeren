@@ -1,4 +1,4 @@
-﻿using System.Xml;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Exercises.Exercise5;
@@ -14,7 +14,7 @@ class Runner
 
     var elements = StreamXml(_xmlFileName);
 
-    foreach (var personElement in elements.Take(100))
+    foreach(var personElement in elements.Take(100))
     {
       var personRow = new PersonRow();
       personRow.Id.Value = new Guid(personElement.Attribute("id")!.Value);
@@ -35,13 +35,13 @@ class Runner
 
   private static IEnumerable<XElement> StreamXml(string uri)
   {
-    using (var reader = XmlReader.Create(uri))
+    using(var reader = XmlReader.Create(uri))
     {
       reader.ReadStartElement("Persons");
 
-      while (reader.Read())
+      while(reader.Read())
       {
-        if (reader.NodeType == XmlNodeType.Element)
+        if(reader.NodeType == XmlNodeType.Element)
         {
           yield return (XElement.ReadFrom(reader) as XElement)!;
         }

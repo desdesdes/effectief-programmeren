@@ -1,4 +1,4 @@
-﻿Imports Microsoft.EntityFrameworkCore
+Imports Microsoft.EntityFrameworkCore
 
 Namespace Sql
 

@@ -1,4 +1,4 @@
-﻿using Demos.Collecties;
+using Demos.Collecties;
 
 namespace Demos.ExtensionMethods;
 

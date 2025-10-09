@@ -1,4 +1,4 @@
-﻿Module Program
+Module Program
   Sub Main(args As String())
     StructuresAndClasses.Runner.RunMe()
     'ClassesAndModules.Runner.RunMe()

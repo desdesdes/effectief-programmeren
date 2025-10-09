@@ -1,4 +1,4 @@
-﻿Imports Demos.Collecties
+Imports Demos.Collecties
 
 Namespace ExtensionMethods
   Module Runner

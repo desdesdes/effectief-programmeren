@@ -1,4 +1,4 @@
-﻿Namespace Linq
+Namespace Linq
   Public Class Person
     Public Property Id As Guid
     Public Property FirstName As String

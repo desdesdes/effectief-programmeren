@@ -1,4 +1,4 @@
-# AFAS gitattributes V2.0.2 27-08-2025
+# AFAS editorconfig V2.0.3 18-09-2025
 # Do not change! Should only be changes by AFAS .net standards workgroup
 
 # More info: https://docs.afas.dev/dev/handleidingen/editorconfig
@@ -191,16 +191,16 @@ csharp_keep_user_linebreaks = true # AFAS preference: MS does not use this setti
 csharp_keep_existing_linebreaks = true # AFAS preference: MS does not use this setting
 
 # Xml project files
-[*.{csproj,vbproj}]
-indent_size = 2
+[*.{csproj,vbproj,resx}]
 charset = utf-8
+indent_size = 2
 
 # Xml build files
 [*.builds]
 indent_size = 2
 
 # Xml files
-[*.{xml,stylecop,resx,ruleset,xaml}]
+[*.{xml,stylecop,ruleset,xaml}]
 indent_size = 2
 
 # Xml config files
@@ -214,6 +214,12 @@ end_of_line = crlf
 # JSON files
 [*.json]
 indent_size = 2
+
+# Xml resource files
+[*.resx]
+# match Visual Studio behavior
+insert_final_newline = false
+trim_trailing_whitespace = false
 
 # YAML config files
 [*.{yml,yaml}]

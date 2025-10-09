@@ -1,4 +1,4 @@
-﻿namespace Demos;
+namespace Demos;
 
 public class Program
 {

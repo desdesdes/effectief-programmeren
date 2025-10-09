@@ -1,4 +1,4 @@
-﻿Namespace Generics
+Namespace Generics
   Public Class WebSettings
     Implements ISettings
 

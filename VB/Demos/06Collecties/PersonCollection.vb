@@ -1,4 +1,4 @@
-﻿Namespace Collecties
+Namespace Collecties
   Class PersonCollection
     Private _persons as new List(Of Person)
 

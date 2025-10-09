@@ -1,4 +1,4 @@
-﻿namespace Demos.FunctionalProgramming;
+namespace Demos.FunctionalProgramming;
 
 class Person(Guid id, string firstName, string lastName) : IComparable<Person>
 {

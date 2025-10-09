@@ -1,4 +1,4 @@
-﻿Namespace Exercises.Exercise3
+Namespace Exercises.Exercise3
   Class PersonRow
     Inherits AntaRow
 

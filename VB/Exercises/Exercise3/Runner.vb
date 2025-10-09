@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise3
+namespace Exercises.Exercise3
   Class Runner
     Public Shared Sub RunMe()
       Dim persons = New AntaDataBuffer(Of PersonRow)

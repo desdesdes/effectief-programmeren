@@ -1,4 +1,4 @@
-﻿namespace Demos.ClassesAndModules;
+namespace Demos.ClassesAndModules;
 
 static class Runner
 {

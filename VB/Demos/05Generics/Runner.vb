@@ -1,4 +1,4 @@
-﻿Namespace Generics
+Namespace Generics
   Module Runner
     Sub RunMe()
       Dim set1 = New WebSettings With {

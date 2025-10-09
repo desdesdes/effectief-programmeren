@@ -1,4 +1,4 @@
-﻿Imports Exercises.Exercises.Exercise1
+Imports Exercises.Exercises.Exercise1
 
 Public Class MainWindow
   Private Sub CloseButton_Click(sender As Object, e As System.Windows.RoutedEventArgs) Handles CloseButton.Click

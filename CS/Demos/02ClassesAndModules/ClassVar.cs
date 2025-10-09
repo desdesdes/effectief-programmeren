@@ -1,4 +1,4 @@
-﻿namespace Demos.ClassesAndModules;
+namespace Demos.ClassesAndModules;
 
 class ClassVar
 {

@@ -1,7 +1,7 @@
-﻿Public Class RefHolder
+Public Class RefHolder
   Private ReadOnly _number As Integer
 
-  Sub New (number as Integer)
+  Sub New(number as Integer)
     _number = number
   End Sub
 

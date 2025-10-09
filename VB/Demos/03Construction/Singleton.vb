@@ -1,4 +1,4 @@
-﻿Namespace Construction
+Namespace Construction
   Class Singleton
     Shared ReadOnly _instance As New Singleton()
 

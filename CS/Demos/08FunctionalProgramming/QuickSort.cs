@@ -1,4 +1,4 @@
-﻿namespace Demos.FunctionalProgramming;
+namespace Demos.FunctionalProgramming;
 
 class QuickSort<T> where T : IComparable<T>
 {
@@ -8,13 +8,13 @@ class QuickSort<T> where T : IComparable<T>
 
     var pos = 0;
 
-    while (pos < list.Count)
+    while(pos < list.Count)
     {
       var item = list[pos];
 
-      for (var index = 0; index <= pos; index++)
+      for(var index = 0; index <= pos; index++)
       {
-        if (index == pos)
+        if(index == pos)
         {
           newData.Add(item);
           break;

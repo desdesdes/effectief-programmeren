@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise2;
+namespace Exercises.Exercise2;
 
 class AntaDataBuffer<T>
 {

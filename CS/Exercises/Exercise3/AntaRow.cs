@@ -1,7 +1,6 @@
-﻿namespace Exercises.Exercise3
+namespace Exercises.Exercise3;
+
+abstract class AntaRow
 {
-  abstract class AntaRow
-  {
-    public AntaField<Guid> Id { get; set; } = new AntaField<Guid>();
-  }
+  public AntaField<Guid> Id { get; set; } = new AntaField<Guid>();
 }

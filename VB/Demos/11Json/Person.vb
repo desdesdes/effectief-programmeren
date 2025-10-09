@@ -1,4 +1,4 @@
-﻿Imports System.Text.Json.Serialization
+Imports System.Text.Json.Serialization
 
 Namespace Json
   Public Class Person

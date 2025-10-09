@@ -1,5 +1,5 @@
-﻿Imports Microsoft.Data.SqlClient
 Imports Dapper
+Imports Microsoft.Data.SqlClient
 
 Namespace Sql
   Public Class Dapper

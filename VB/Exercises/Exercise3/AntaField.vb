@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise3
+namespace Exercises.Exercise3
   Public Class AntaField(Of T)
     Public Property Value As T
 

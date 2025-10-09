@@ -1,4 +1,4 @@
-﻿namespace Demos.Construction;
+namespace Demos.Construction;
 
 class Ordering
 {

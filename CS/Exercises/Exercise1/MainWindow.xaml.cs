@@ -1,26 +1,25 @@
-﻿using System.Windows;
+using System.Windows;
 
-namespace Exercises.Exercise1
+namespace Exercises.Exercise1;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window
+  public MainWindow()
   {
-    public MainWindow()
-    {
-      InitializeComponent();
-    }
+    InitializeComponent();
+  }
 
-    private void StartButton_Click(object sender, RoutedEventArgs e)
-    {
-      File.Write(@"c:\temp\demo.txt", "Hallo wereld");
-      TextBox1.Text = "De file is geschreven";
-    }
+  private void StartButton_Click(object sender, RoutedEventArgs e)
+  {
+    File.Write(@"c:\temp\demo.txt", "Hallo wereld");
+    TextBox1.Text = "De file is geschreven";
+  }
 
-    private void CloseButton_Click(object sender, RoutedEventArgs e)
-    {
-      Close();
-    }
+  private void CloseButton_Click(object sender, RoutedEventArgs e)
+  {
+    Close();
   }
 }

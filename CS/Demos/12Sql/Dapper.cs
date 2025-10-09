@@ -1,5 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
 using Dapper;
+using Microsoft.Data.SqlClient;
 
 namespace Demos.Sql;
 
@@ -17,7 +17,7 @@ class Dapper
     using var con = new SqlConnection(_connectionString);
     var persons = con.Query<Person>("select id, firstname, lastname from persons where firstname = @firstname", new { FirstName = "Bart" });
 
-    foreach (var person in persons)
+    foreach(var person in persons)
     {
       Console.WriteLine("{0} {1}", person.FirstName, person.LastName);
     }

@@ -1,4 +1,4 @@
-﻿Namespace Collecties
+Namespace Collecties
   Module Runner
     Sub RunMe()
       Dim persons As New PersonCollection

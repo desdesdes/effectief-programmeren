@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -65,7 +65,7 @@ static class Runner
     using var writer = new Utf8JsonWriter(stream, settings);
     writer.WriteStartArray();
 
-    for (int i = 0; i < _times; i++) //ca 100mb
+    for(int i = 0; i < _times; i++) //ca 100mb
     {
       writer.WriteStartObject();
       writer.WriteString("Id", Guid.NewGuid().ToString());
@@ -89,7 +89,7 @@ static class Runner
       writer.WriteString("Zip", "20500");
       writer.WriteEndObject();
 
-      if (i % 1000 == 0)
+      if(i % 1000 == 0)
       {
         writer.Flush(); // flushes from memory to disk every 1000 elements, can be tuned to optimize the performance
       }
@@ -114,12 +114,12 @@ static class Runner
     writer.WriteStartArray();
 
     int i = 0;
-    foreach (var element in StreamElementsFromMemory())
+    foreach(var element in StreamElementsFromMemory())
     {
       i++;
       element.WriteTo(writer);
 
-      if (i % 1000 == 0)
+      if(i % 1000 == 0)
       {
         writer.Flush(); // flushes from memory to disk every 1000 elements, can be tuned to optimize the performance
       }
@@ -136,7 +136,7 @@ static class Runner
     var iterator = JsonSerializer.DeserializeAsyncEnumerable<JsonNode>(stream, options);
 
     int counter = 0;
-    await foreach (var node in iterator)
+    await foreach(var node in iterator)
     {
       counter++;
     }
@@ -146,7 +146,7 @@ static class Runner
 
   private static IEnumerable<JsonObject> StreamElementsFromMemory()
   {
-    for (int i = 0; i < _times; i++)
+    for(int i = 0; i < _times; i++)
     {
       yield return new JsonObject
       {

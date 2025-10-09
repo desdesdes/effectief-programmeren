@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise3;
+namespace Exercises.Exercise3;
 
 class AntaDataBuffer<T> : ICollection<T>
   where T : AntaRow
@@ -60,9 +60,9 @@ class AntaDataBuffer<T> : ICollection<T>
   {
     get
     {
-      foreach (var row in _rows)
+      foreach(var row in _rows)
       {
-        if (row.Id.Value == index)
+        if(row.Id.Value == index)
         {
           return row;
         }

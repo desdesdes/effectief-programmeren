@@ -1,4 +1,4 @@
-﻿namespace Exercises.Exercise3;
+namespace Exercises.Exercise3;
 
 class Runner
 {
@@ -21,7 +21,7 @@ class Runner
     persons.Add(personRow);
 
     Console.WriteLine("List:");
-    foreach (var person in persons)
+    foreach(var person in persons)
     {
       Console.WriteLine($"{person.FirstName.Value} {person.LastName.Value}");
     }

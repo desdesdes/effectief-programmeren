@@ -1,4 +1,4 @@
-﻿Namespace Generics
+Namespace Generics
   Class SqlSettings
     Implements ISettings
 
