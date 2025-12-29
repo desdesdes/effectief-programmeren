@@ -23,6 +23,12 @@ public partial class WpfClient : Window
 
   public WpfClient()
   {
+    Dispatcher.UnhandledException += (s, e) =>
+    {
+      MessageBox.Show(e.Exception.ToString(), "Er is een fout opgetreden", MessageBoxButton.OK, MessageBoxImage.Error);
+      e.Handled = true;
+    };
+
     InitializeComponent();
   }
 
@@ -33,6 +39,12 @@ public partial class WpfClient : Window
     await _printer.PrintAsync("Hallo Wereld");
     TextBox1.Text = _printer.PrintStatus.ToString();
   }
+
+  private async void ThrowException()
+  {
+    throw new Exception("Test exception");
+  }
+
 
   private void CloseButton_Click(object sender, RoutedEventArgs e)
   {

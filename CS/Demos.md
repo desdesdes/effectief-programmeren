@@ -823,12 +823,12 @@ Wat als je op globaal niveau de exception wilt opvangen? Dit kan door de `AppDom
       ThrowException();
     });
 
-    Console.ReadKey();\
+    Console.ReadKey();
 ```
 
-- Run de code. Wat gebeurd er? De applicatie crasht niet. Waarom? Vreemd genoeg heeft Microsoft dit gedrag aangepast voor de Task. Dit is erg vreemd en we raden dus ook aan om bij unhandeld task exceptions toch de applicatie te laten crashen. Dit kan door `TaskScheduler.UnobservedTaskException` op te vangen en een actie te ondernemen. Bijvoorbeeld door daar een `Environment.Exit` aan te roepen.
+- Run de code. Wat gebeurd er? De applicatie crasht niet. Waarom? Vreemd genoeg heeft Microsoft dit gedrag aangepast voor de Task. Dit is erg vreemd en we raden dus ook aan om bij unhandeld task exceptions toch de applicatie te laten crashen. Dit kan door `TaskScheduler.UnobservedTaskException` op te vangen en een actie te ondernemen. Bijvoorbeeld door daar een `Environment.Exit` aan te roepen. Uiteraard is het nog beter om de task te awaiten, maar daarover later meer.
 
-- Gebruik je 3de of ui partij frameworks dan is het goed om te weten dat deze vaak ook speciale exception handling hebben. Zo heeft wpf `App.DispatcherUnhandledException` om alle exception in ui acties af te kunenn vangen. Of `RxApp.DefaultExceptionHandler` om alle exceptions vanuit Rx af te vangen.
+- Gebruik je 3de of ui partij frameworks dan is het goed om te weten dat deze vaak ook speciale exception handling hebben. Zo heeft wpf `App.DispatcherUnhandledException` om alle exception in ui acties af te kunnen vangen. Of `RxApp.DefaultExceptionHandler` om alle exceptions vanuit Rx af te vangen.
 
 - We willen nu een custom exception maken met een extra property. Maak een nieuwe class aan `MyCustomException` en laat deze afleiden van `Exception`. Voeg een property `ErrorCode` toe. Pas de constructor aan zodat deze de ErrorCode kan instellen.
 
@@ -836,9 +836,25 @@ Wat als je op globaal niveau de exception wilt opvangen? Dit kan door de `AppDom
 
 ## Demo 14: Parallel
 
+### Async void
+
+- Open WpfClient. 
+- Wijs erop dat in de constructor bij een unhandled ui exception de `App.DispatcherUnhandledException` event wordt afgehandeld.
+- Voeg op de eerste regel in `StartButton_Click` een `ThrowException();` toe. Run de code. Je ziet dat de exception wordt opgevangen in de `App.DispatcherUnhandledException` event handler, ongeacht of het async void code is.
+- Pas de code aan naar `private async Task ThrowException()`. Run de code. Nu wordt de exception niet meer opgevangen in de `App.DispatcherUnhandledException` event handler. Waarom?
+- Pas de code terug aan naar `private async void ThrowException()`. Pas de aanroep in de `StartButton_Click` aan naar `await Task.Run(() => ThrowException());`. Run de code. Nu wordt de exception ook niet meer opgevangen in de `App.DispatcherUnhandledException` event handler. Waarom?
+- We zeggen altijd dat je alles was async is `async Task` moet maken. Doe dit bij `private async Task ThrowException()`. Run de code. De exception handler werdt nu weer opgeroepen. Waarom?
+- Pas het volgende de StartButton_Click aan naar `private async Task StartButton_Click(object sender, RoutedEventArgs e)`. Deze code compileerd niet.
+- Verwijder de aanroep naar `ThrowException()`.
+- Tips: 
+  - Gebruik `async void` alleen voor event handlers van ui controls, omdat het daar niet anders kan.
+  - Gebruik `async Task` voor alle andere async methodes en await altijd de task zodat exceptions netjes worden afgendeld.
+  - Gebruik als je `Task.Run` gebruikt op de ui thread dan zorgt dit ervoor dat de code op een threadpool thread wordt uitgevoerd. Eventuele exceptions worden niet meer op de ui thread afgehandeld. Je moet deze dus zelf afhandelen en je moet zelf terug naar de ui thread gaan om deze te updaten. Gebruik dus liever async void.
+  - Gebruik altijd een await op een task returning methode omdat je anders de de exception inslikt!
+
 ### Geen await zorgt voor parallel
 
-- Open WpfClient. Run de code. De code werkt. Maar de textbox geeft printing aan terwijl het printen nog niet afgelopen is. Blijkbaar draait er parellele code. Zowel het printen is bezig als de ui wordt biijgewerkt.
+- Open WpfClient. Run de code. De code werkt. Maar de textbox geeft printing aan terwijl het printen nog niet afgelopen is. Blijkbaar draait er parellele code. Zowel het printen is bezig als de ui wordt bijgewerkt.
 
 - Pas de code aan naar:
 
