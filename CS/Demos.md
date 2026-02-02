@@ -864,7 +864,7 @@ private async void StartButton_Click(object sender, RoutedEventArgs e)
   _printer.Reset();
   TextBox1.Text = _printer.PrintStatus.ToString();
   await _printer.PrintAsync("Hallo Wereld");
-  TextBox1.Text = _printer.PrintStatus.ToString();
+  TextBox1.Text = "Klaar!";
 }
 ```
 
@@ -880,7 +880,7 @@ private async void StartButton_Click(object sender, RoutedEventArgs e)
   _printer.Reset();
   TextBox1.Text = _printer.PrintStatus.ToString();
   await _printer.PrintAsync("Hallo Wereld").ConfigureAwait(false);
-  TextBox1.Text = _printer.PrintStatus.ToString();
+  TextBox1.Text = "Klaar!";
 }
 ```
 

@@ -36,8 +36,8 @@ public partial class WpfClient : Window
   {
     _printer.Reset();
     TextBox1.Text = _printer.PrintStatus.ToString();
-    await _printer.PrintAsync("Hallo Wereld");
-    TextBox1.Text = _printer.PrintStatus.ToString();
+    _printer.PrintAsync("Hallo Wereld");
+    TextBox1.Text = "Klaar!";
   }
 
   private async void ThrowException()
