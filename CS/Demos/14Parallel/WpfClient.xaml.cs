@@ -1,8 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,8 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Demos.Parallel;
 
-namespace Demos.Parallel;
+namespace Demos._14Parallel;
 
 /// <summary>
 /// Interaction logic for WpfClient.xaml
@@ -36,7 +35,7 @@ public partial class WpfClient : Window
   {
     _printer.Reset();
     TextBox1.Text = _printer.PrintStatus.ToString();
-    _printer.PrintAsync("Hallo Wereld");
+    _ = _printer.PrintAsync("Hallo Wereld");
     TextBox1.Text = "Klaar!";
   }
 
