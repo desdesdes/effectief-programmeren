@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/Documents/">
+    <File Path=".editorconfig" />
+    <File Path="Code conventions.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="VB/Demos.md" />
+    <File Path="VB/Effectief VB.NET programmeren.pptx" />
+    <File Path="VB/Woordenlijst.md" />
+  </Folder>
+  <Project Path="VB/Demos/Demos.vbproj" />
+  <Project Path="VB/Exercises/Exercises.vbproj" />
+  <Properties Name="TeamFoundationVersionControl">
+    <Property Name="SccEnterpriseProvider" Value="{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}" />
+    <Property Name="SccLocalPath0" Value="." />
+    <Property Name="SccLocalPath1" Value="VB\\Demos" />
+    <Property Name="SccLocalPath2" Value="VB\\Exercises" />
+    <Property Name="SccNumberOfProjects" Value="3" />
+    <Property Name="SccProjectName1" Value="VB/Demos" />
+    <Property Name="SccProjectName2" Value="VB/Exercises" />
+    <Property Name="SccProjectUniqueName1" Value="VB\\Demos\\Demos.vbproj" />
+    <Property Name="SccProjectUniqueName2" Value="VB\\Exercises\\Exercises.vbproj" />
+    <Property Name="SccTeamFoundationServer" Value="https://pdtfs01.ad.afas.nl/tfs/defaultcollection" />
+  </Properties>
+</Solution>

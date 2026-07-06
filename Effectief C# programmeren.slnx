@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Code conventies.md" />
+    <File Path="CS/Demos.md" />
+    <File Path="CS/Effectief C# programmeren.pptx" />
+    <File Path="CS/Woordenlijst.md" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="CS/Demos/Demos.csproj" />
+  <Project Path="CS/Exercises/Exercises.csproj" />
+</Solution>
