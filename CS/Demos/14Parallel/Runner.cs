@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using Demos.DelegatesAndEvents;
+using Demos._14Parallel;
 
 namespace Demos.Parallel;
 
